@@ -1,6 +1,11 @@
 pipeline {
     agent { node { label 'AGENT-1' } }
-
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+    }
+    environment { 
+       USER = 'saikiran'
+    }
     stages {
         stage('Build') {
             steps {
@@ -9,12 +14,13 @@ pipeline {
                 ls -ltr
                 pwd
                 echo "Hello from github webhook event"
+                printenv
               '''
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing..' 
             }
         }
         stage('Deploy') {
