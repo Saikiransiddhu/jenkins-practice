@@ -110,6 +110,7 @@ pipeline {
                         stage('Nested 2') {
                             steps {
                                 echo "In stage Nested 2 within Branch C"
+                                sh 'sleep 10'
                             }
                         }
                     }
