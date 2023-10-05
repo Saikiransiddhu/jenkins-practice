@@ -29,6 +29,14 @@ pipeline {
                 //error 'this is failed'
             }
         }
+         stage('Example') {
+            environment { 
+                AUTH = credentials('my-predefined-secret-text') 
+            }
+            steps {
+                sh 'printenv'
+            }
+        }
     }
      post { 
         always { 
